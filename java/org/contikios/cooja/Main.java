@@ -262,7 +262,7 @@ class Main {
       // MSPSim does not use the SimConfig record, so skip to next validation.
       if (mspSim) continue;
       var randomSeed = map.get("random-seed");
-      var autoStart = map.getOrDefault("autostart", Boolean.toString(options.autoStart || !options.gui));
+      var autoStart = map.getOrDefault("autostart", String.valueOf(options.autoStart));
       var updateSim = map.getOrDefault("update-simulation", Boolean.toString(options.updateSimulation));
       var logDir = map.getOrDefault("logdir", options.logDir);
       simConfigs.add(new Simulation.SimConfig(file, randomSeed == null ? options.randomSeed : Long.decode(randomSeed),

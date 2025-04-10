@@ -1163,9 +1163,14 @@ public class Cooja {
         gui.saveSimulationConfig(new File(simConfig.file()));
       } else if (simConfig.autoStart()) {
         autoQuit = true;
-        if (!config.vis) {
-          sim.setSpeedLimit(null);
-        }
+        //if (!config.vis) {
+        //  sim.setSpeedLimit(null);
+        //}
+        logger.info("Waiting 10 seconds for RPL Border Router to start");
+        sim.waitFor(true, 10000);
+        logger.info("Waiting 10 seconds for Python UDP WSN Server to start");
+        sim.waitFor(true, 10000);
+        logger.info("Starting simulation");
         var ret = sim.startSimulation(true);
         if (ret == null) {
           logger.info("TEST OK\n");

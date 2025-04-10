@@ -85,7 +85,7 @@ public final class Simulation {
   private final Thread simulationThread;
 
   /* If true, run simulation at full speed */
-  private boolean speedLimitNone = true;
+  private boolean speedLimitNone = false;
   /* Limit simulation speed to maxSpeed; if maxSpeed is 1.0 simulation is run at real-time speed */
   private double speedLimit;
   /* Used to restrict simulation speed */
@@ -561,7 +561,7 @@ public final class Simulation {
     return true;
   }
 
-  private void waitFor(boolean isRunning, long timeout) {
+  public void waitFor(boolean isRunning, long timeout) {
     if (Thread.currentThread() == simulationThread) {
       return;
     }
